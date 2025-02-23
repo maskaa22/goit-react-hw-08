@@ -3,7 +3,7 @@ import { useId } from "react";
 import * as Yup from "yup";
 import css from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsSlice";
+import { addContact } from "../../redux/contactsOps";
 
 export default function ContactForm() {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ export default function ContactForm() {
   };
 
   const handleSubmit = (values, actions) => {
-    dispatch(addContact({ ...values, id: crypto.randomUUID() }));
+    dispatch(addContact({ ...values }));
     actions.resetForm();
   };
 
@@ -26,7 +26,7 @@ export default function ContactForm() {
       .max(50, "Too Long!")
       .required("Required"),
     number: Yup.string()
-      .matches(/[0-9]{3}-[0-9]{2}-[0-9]{2}/, {
+      .matches(/[0-9]{3}-[0-9]{3}-[0-9]{4}/, {
         message: <span>Invalid password</span>,
       })
       .required("Required"),
