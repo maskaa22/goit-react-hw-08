@@ -1,0 +1,16 @@
+.variant {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+.yes,
+.no {
+  font-size: 25px;
+  cursor: pointer;
+}
+.yes {
+  color: rgb(212, 45, 45);
+}
+.no {
+  color: rgb(31, 212, 31);
+}
