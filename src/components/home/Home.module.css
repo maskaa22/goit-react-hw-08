@@ -1,0 +1,11 @@
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+}
+.user {
+  font-size: 30px;
+    color: blueviolet;
+    margin-left: 20px;
+}
