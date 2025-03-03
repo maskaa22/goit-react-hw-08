@@ -22,8 +22,8 @@ function App() {
   }, [dispatch]);
 
   return isRefreshing ? null : (
-    <Routes>
-      <Route path="/" element={<Layout />}>
+    <Layout>
+      <Routes>
         <Route path="/" element={<Home />} />
         <Route
           path="/register"
@@ -43,14 +43,12 @@ function App() {
         <Route
           path="/contacts"
           element={
-            <PrivateRoute>
-              <ContactsPage />
-            </PrivateRoute>
+            <PrivateRoute component={<ContactsPage />} redirectTo="/login" />
           }
         />
         <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
+      </Routes>
+    </Layout>
   );
 }
 

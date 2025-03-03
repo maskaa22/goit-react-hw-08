@@ -5,6 +5,7 @@ import {
   editContact,
   fetchContacts,
 } from "./operations";
+import { logoutUser } from "../auth/operations";
 
 const initialState = {
   items: [],
@@ -17,9 +18,6 @@ const slice = createSlice({
   name: "contacts",
   initialState,
   reducers: {
-    logout: (state) => {
-      state.items = [];
-    },
     editCurrentContact: (state, action) => {
       state.currentContact = action.payload;
     },
@@ -51,6 +49,7 @@ const slice = createSlice({
         state.currentContact = null;
         state.loading = false;
       })
+      .addCase(logoutUser.fulfilled, () => initialState)
       .addMatcher(
         (action) => action.type.endsWith("pending"),
         (state) => {
@@ -67,6 +66,6 @@ const slice = createSlice({
   },
 });
 
-export const { logout, editCurrentContact } = slice.actions;
+export const { editCurrentContact } = slice.actions;
 
 export default slice.reducer;
